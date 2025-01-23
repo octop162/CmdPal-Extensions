@@ -1,0 +1,1 @@
+# CmdPal-VisualStudio-Ext
