@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "VisualStudioExtension (Package)": {
+      "commandName": "MsixPackage",
+      "commandLineArgs": "-RegisterProcessAsComServer"
+    },
+    "VisualStudioExtension (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
