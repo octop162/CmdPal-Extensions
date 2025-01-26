@@ -136,4 +136,16 @@
     <value>{0}: {1}</value>
     <comment>{0} is the Visual Studio instance name, {1} is the path</comment>
   </data>
+  <data name="Setting_ExcludedVersions_Description" xml:space="preserve">
+    <value>Add multiple versions separated by space. Example: 2019 2022</value>
+  </data>
+  <data name="Setting_ExcludedVersions_Label" xml:space="preserve">
+    <value>Excluded versions</value>
+  </data>
+  <data name="Setting_ShowPrerelease_Description" xml:space="preserve">
+    <value>Include results from prerelease</value>
+  </data>
+  <data name="Setting_ShowPrerelease_Label" xml:space="preserve">
+    <value>Show prerelease</value>
+  </data>
 </root>

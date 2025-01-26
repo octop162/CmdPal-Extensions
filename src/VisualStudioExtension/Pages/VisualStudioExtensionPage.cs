@@ -13,22 +13,24 @@ namespace VisualStudioExtension.Pages;
 internal sealed partial class VisualStudioExtensionPage : ListPage
 {
     private readonly VisualStudioService _visualStudioService;
+    private readonly SettingsManager _settingsManager;
 
-    public VisualStudioExtensionPage(VisualStudioService visualStudioService)
+    public VisualStudioExtensionPage(SettingsManager settingsManager, VisualStudioService visualStudioService)
     {
+        _settingsManager = settingsManager;
         _visualStudioService = visualStudioService;
 
         Name = "Name".GetLocalized();
 
-        var lightIcon = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @$"Assets\VisualStudio.light.png");
-        var darkIcon = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @$"Assets\VisualStudio.dark.png");
+        var lightIcon = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/VisualStudio.light.png");
+        var darkIcon = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/VisualStudio.dark.png");
         Icon = new(new(lightIcon), new(darkIcon));
     }
 
     public override IListItem[] GetItems()
     {
         return _visualStudioService
-            .GetResults(true)
+            .GetResults(_settingsManager.ShowPrerelease)
             .Select(r => new CodeContainerListItem(r))
             .ToArray();
     }

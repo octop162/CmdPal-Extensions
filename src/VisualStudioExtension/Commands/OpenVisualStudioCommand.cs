@@ -15,7 +15,7 @@ namespace VisualStudioExtension.Commands
         private readonly string _fileName;
         private readonly string _arguments;
 
-        internal OpenVisualStudioCommand(CodeContainer codeContainer, bool elevated)
+        public OpenVisualStudioCommand(CodeContainer codeContainer, bool elevated)
         {
             _elevated = elevated;
             _fileName = codeContainer.Instance.InstancePath;

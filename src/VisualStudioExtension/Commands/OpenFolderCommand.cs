@@ -14,7 +14,7 @@ namespace VisualStudioExtension.Commands
     {
         private readonly string _fileName;
 
-        internal OpenFolderCommand(CodeContainer codeContainer)
+        public OpenFolderCommand(CodeContainer codeContainer)
         {
             _fileName = Path.GetDirectoryName(codeContainer.FullPath) ?? string.Empty;
 

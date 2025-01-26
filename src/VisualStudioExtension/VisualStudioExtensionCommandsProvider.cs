@@ -8,17 +8,19 @@ using VisualStudioExtension.Pages;
 
 namespace VisualStudioExtension;
 
-public partial class VisualStudioExtensionCommandsProvider : CommandProvider
+internal partial class VisualStudioExtensionCommandsProvider : CommandProvider
 {
     private readonly VisualStudioService _visualStudioService;
+    private readonly SettingsManager _settingsManager;
 
-    public VisualStudioExtensionCommandsProvider(VisualStudioService visualStudioService)
+    public VisualStudioExtensionCommandsProvider(SettingsManager settingsManager, VisualStudioService visualStudioService)
     {
+        _settingsManager = settingsManager;
         _visualStudioService = visualStudioService;
 
         _commands =
         [
-            new CommandItem(new VisualStudioExtensionPage(_visualStudioService))
+            new CommandItem(new VisualStudioExtensionPage(_settingsManager, _visualStudioService))
             {
                 Subtitle = "Description".GetLocalized(),
             }

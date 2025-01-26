@@ -16,6 +16,7 @@ namespace VisualStudioExtension;
 public sealed partial class VisualStudioExtension : IExtension, IDisposable
 {
     private readonly ManualResetEvent _extensionDisposedEvent;
+    private readonly SettingsManager _settingsManager;
     private readonly ILogger _logger;
     private readonly VisualStudioService _visualStudioService;
 
@@ -25,10 +26,11 @@ public sealed partial class VisualStudioExtension : IExtension, IDisposable
     {
         _extensionDisposedEvent = extensionDisposedEvent;
 
+        _settingsManager = new SettingsManager();
         _logger = new Logger();
         _visualStudioService = new VisualStudioService(_logger);
-        _visualStudioService.InitInstances([]); // TODO implement settings
-        _provider = new VisualStudioExtensionCommandsProvider(_visualStudioService);
+        _visualStudioService.InitInstances(_settingsManager.ExcludedVersions);
+        _provider = new VisualStudioExtensionCommandsProvider(_settingsManager, _visualStudioService);
     }
 
     public object? GetProvider(ProviderType providerType)
