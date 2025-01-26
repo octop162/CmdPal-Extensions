@@ -20,7 +20,7 @@ public partial class VisualStudioExtensionCommandsProvider : CommandProvider
         [
             new CommandItem(new VisualStudioExtensionPage(_visualStudioService))
             {
-                Subtitle = "Search Visual Studio recents",
+                Subtitle = "Description".GetLocalized(),
             }
         ];
     }

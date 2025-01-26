@@ -19,7 +19,7 @@ namespace VisualStudioExtension.Commands
             _fileName = Path.GetDirectoryName(codeContainer.FullPath) ?? string.Empty;
 
             Icon = new("\uE838");
-            Name = "Open folder";
+            Name = "Command_OpenFolder".GetLocalized();
         }
 
         public override ICommandResult Invoke()
@@ -36,7 +36,7 @@ namespace VisualStudioExtension.Commands
             {
             }
 
-            return CommandResult.Hide();
+            return CommandResult.Dismiss();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace VisualStudioExtension
         {
             Title = codeContainer.Name;
             Icon = new IconInfo(codeContainer.Instance.InstancePath);
-            Subtitle = $"{codeContainer.Instance.DisplayName}: {codeContainer.FullPath}";
+            Subtitle = string.Format("Result_Subtitle".GetLocalized(), codeContainer.Instance.DisplayName, codeContainer.FullPath);
             MoreCommands =
             [
                 new CommandContextItem(new OpenVisualStudioCommand(codeContainer, true)),

@@ -22,7 +22,9 @@ namespace VisualStudioExtension.Commands
             _arguments = $"\"{codeContainer.FullPath}\"";
 
             Icon = new(_elevated ? "\uE7EF" : "\uE737");
-            Name = _elevated ? "Open as administrator" : "Open";
+            Name = _elevated
+                ? "Command_OpenAsAdministrator".GetLocalized()
+                : "Command_Open".GetLocalized();
         }
 
         public override ICommandResult Invoke()
@@ -45,7 +47,7 @@ namespace VisualStudioExtension.Commands
             {
             }
 
-            return CommandResult.Hide();
+            return CommandResult.Dismiss();
         }
     }
 }

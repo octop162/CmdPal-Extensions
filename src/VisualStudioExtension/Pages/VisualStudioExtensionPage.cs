@@ -18,7 +18,7 @@ internal sealed partial class VisualStudioExtensionPage : ListPage
     {
         _visualStudioService = visualStudioService;
 
-        Name = "Visual Studio";
+        Name = "Name".GetLocalized();
 
         var lightIcon = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @$"Assets\VisualStudio.light.png");
         var darkIcon = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @$"Assets\VisualStudio.dark.png");
