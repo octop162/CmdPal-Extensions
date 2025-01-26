@@ -7,6 +7,7 @@ using System.Threading;
 using Community.PowerToys.Run.Plugin.VisualStudio.Core;
 using Community.PowerToys.Run.Plugin.VisualStudio.Core.Services;
 using Microsoft.CmdPal.Extensions;
+using Microsoft.CmdPal.Extensions.Helpers;
 
 namespace VisualStudioExtension;
 
@@ -17,6 +18,7 @@ public sealed partial class VisualStudioExtension : IExtension, IDisposable
 {
     private readonly ManualResetEvent _extensionDisposedEvent;
     private readonly SettingsManager _settingsManager;
+    private readonly Settings _settings;
     private readonly ILogger _logger;
     private readonly VisualStudioService _visualStudioService;
 
@@ -29,8 +31,12 @@ public sealed partial class VisualStudioExtension : IExtension, IDisposable
         _settingsManager = new SettingsManager();
         _logger = new Logger();
         _visualStudioService = new VisualStudioService(_logger);
-        _visualStudioService.InitInstances(_settingsManager.ExcludedVersions);
         _provider = new VisualStudioExtensionCommandsProvider(_settingsManager, _visualStudioService);
+
+        _settings = _settingsManager.Settings;
+        _settings.SettingsChanged += SettingsChanged;
+
+        InitInstances();
     }
 
     public object? GetProvider(ProviderType providerType)
@@ -43,4 +49,8 @@ public sealed partial class VisualStudioExtension : IExtension, IDisposable
     }
 
     public void Dispose() => _extensionDisposedEvent.Set();
+
+    private void SettingsChanged(object sender, Settings args) => InitInstances();
+
+    private void InitInstances() => _visualStudioService.InitInstances(_settingsManager.ExcludedVersions);
 }

@@ -31,7 +31,7 @@ internal sealed partial class VisualStudioExtensionPage : ListPage
     {
         return _visualStudioService
             .GetResults(_settingsManager.ShowPrerelease)
-            .Select(r => new CodeContainerListItem(r))
+            .Select(r => new CodeContainerListItem(r, _settingsManager))
             .ToArray();
     }
 }
