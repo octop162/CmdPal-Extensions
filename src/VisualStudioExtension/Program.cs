@@ -5,20 +5,21 @@ using System;
 using System.Threading;
 using Microsoft.CmdPal.Extensions;
 
-namespace VisualStudioExtension;
-
-public class Program
+namespace VisualStudioExtension
 {
-    [MTAThread]
-    public static void Main(string[] args)
+    public class Program
     {
-        if (args.Length > 0 && args[0] == "-RegisterProcessAsComServer")
+        [MTAThread]
+        public static void Main(string[] args)
         {
-            using ExtensionServer server = new();
-            var extensionDisposedEvent = new ManualResetEvent(false);
-            var extensionInstance = new VisualStudioExtension(extensionDisposedEvent);
-            server.RegisterExtension(() => extensionInstance);
-            extensionDisposedEvent.WaitOne();
+            if (args.Length > 0 && args[0] == "-RegisterProcessAsComServer")
+            {
+                using ExtensionServer server = new();
+                var extensionDisposedEvent = new ManualResetEvent(false);
+                var extensionInstance = new VisualStudioExtension(extensionDisposedEvent);
+                server.RegisterExtension(() => extensionInstance);
+                extensionDisposedEvent.WaitOne();
+            }
         }
     }
 }

@@ -1,4 +1,7 @@
-# Windows Command Palette: Visual Studio Extension
+# Windows Command Palette Extensions
 
-Windows Command Palette extension for searching Visual Studio recents.  
-It's based on the existing [PowerToys Run Visual Studio plugin](https://github.com/davidegiacometti/PowerToys-Run-VisualStudio).
+This monorepo is the home for my Windows Command Palette extensions.
+
+| Extension | Description |
+| --- | --- |
+| Visual Studio | Search Visual Studio recents. Based on the existing [PowerToys Run Visual Studio plugin](https://github.com/davidegiacometti/PowerToys-Run-VisualStudio). |

@@ -8,30 +8,31 @@ using Community.PowerToys.Run.Plugin.VisualStudio.Core.Services;
 using Microsoft.CmdPal.Extensions;
 using Microsoft.CmdPal.Extensions.Helpers;
 
-namespace VisualStudioExtension.Pages;
-
-internal sealed partial class VisualStudioExtensionPage : ListPage
+namespace VisualStudioExtension.Pages
 {
-    private readonly VisualStudioService _visualStudioService;
-    private readonly SettingsManager _settingsManager;
-
-    public VisualStudioExtensionPage(SettingsManager settingsManager, VisualStudioService visualStudioService)
+    internal sealed partial class VisualStudioExtensionPage : ListPage
     {
-        _settingsManager = settingsManager;
-        _visualStudioService = visualStudioService;
+        private readonly VisualStudioService _visualStudioService;
+        private readonly SettingsManager _settingsManager;
 
-        Name = "Name".GetLocalized();
+        public VisualStudioExtensionPage(SettingsManager settingsManager, VisualStudioService visualStudioService)
+        {
+            _settingsManager = settingsManager;
+            _visualStudioService = visualStudioService;
 
-        var lightIcon = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/VisualStudio.light.png");
-        var darkIcon = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/VisualStudio.dark.png");
-        Icon = new(new(lightIcon), new(darkIcon));
-    }
+            Name = "Name".GetLocalized();
 
-    public override IListItem[] GetItems()
-    {
-        return _visualStudioService
-            .GetResults(_settingsManager.ShowPrerelease)
-            .Select(r => new CodeContainerListItem(r, _settingsManager))
-            .ToArray();
+            var lightIcon = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/VisualStudio.light.png");
+            var darkIcon = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/VisualStudio.dark.png");
+            Icon = new(new(lightIcon), new(darkIcon));
+        }
+
+        public override IListItem[] GetItems()
+        {
+            return _visualStudioService
+                .GetResults(_settingsManager.ShowPrerelease)
+                .Select(r => new CodeContainerListItem(r, _settingsManager))
+                .ToArray();
+        }
     }
 }

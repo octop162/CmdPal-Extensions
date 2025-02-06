@@ -9,48 +9,49 @@ using Community.PowerToys.Run.Plugin.VisualStudio.Core.Services;
 using Microsoft.CmdPal.Extensions;
 using Microsoft.CmdPal.Extensions.Helpers;
 
-namespace VisualStudioExtension;
-
-[ComVisible(true)]
-[Guid("b6f2e125-fa86-4e65-b787-5f98b672bff3")]
-[ComDefaultInterface(typeof(IExtension))]
-public sealed partial class VisualStudioExtension : IExtension, IDisposable
+namespace VisualStudioExtension
 {
-    private readonly ManualResetEvent _extensionDisposedEvent;
-    private readonly SettingsManager _settingsManager;
-    private readonly Settings _settings;
-    private readonly ILogger _logger;
-    private readonly VisualStudioService _visualStudioService;
-
-    private readonly VisualStudioExtensionCommandsProvider _provider;
-
-    public VisualStudioExtension(ManualResetEvent extensionDisposedEvent)
+    [ComVisible(true)]
+    [Guid("b6f2e125-fa86-4e65-b787-5f98b672bff3")]
+    [ComDefaultInterface(typeof(IExtension))]
+    public sealed partial class VisualStudioExtension : IExtension, IDisposable
     {
-        _extensionDisposedEvent = extensionDisposedEvent;
+        private readonly ManualResetEvent _extensionDisposedEvent;
+        private readonly SettingsManager _settingsManager;
+        private readonly Settings _settings;
+        private readonly ILogger _logger;
+        private readonly VisualStudioService _visualStudioService;
 
-        _settingsManager = new SettingsManager();
-        _logger = new Logger();
-        _visualStudioService = new VisualStudioService(_logger);
-        _provider = new VisualStudioExtensionCommandsProvider(_settingsManager, _visualStudioService);
+        private readonly VisualStudioExtensionCommandsProvider _provider;
 
-        _settings = _settingsManager.Settings;
-        _settings.SettingsChanged += SettingsChanged;
-
-        InitInstances();
-    }
-
-    public object? GetProvider(ProviderType providerType)
-    {
-        return providerType switch
+        public VisualStudioExtension(ManualResetEvent extensionDisposedEvent)
         {
-            ProviderType.Commands => _provider,
-            _ => null,
-        };
+            _extensionDisposedEvent = extensionDisposedEvent;
+
+            _settingsManager = new SettingsManager();
+            _logger = new Logger();
+            _visualStudioService = new VisualStudioService(_logger);
+            _provider = new VisualStudioExtensionCommandsProvider(_settingsManager, _visualStudioService);
+
+            _settings = _settingsManager.Settings;
+            _settings.SettingsChanged += SettingsChanged;
+
+            InitInstances();
+        }
+
+        public object? GetProvider(ProviderType providerType)
+        {
+            return providerType switch
+            {
+                ProviderType.Commands => _provider,
+                _ => null,
+            };
+        }
+
+        public void Dispose() => _extensionDisposedEvent.Set();
+
+        private void SettingsChanged(object sender, Settings args) => InitInstances();
+
+        private void InitInstances() => _visualStudioService.InitInstances(_settingsManager.ExcludedVersions);
     }
-
-    public void Dispose() => _extensionDisposedEvent.Set();
-
-    private void SettingsChanged(object sender, Settings args) => InitInstances();
-
-    private void InitInstances() => _visualStudioService.InitInstances(_settingsManager.ExcludedVersions);
 }

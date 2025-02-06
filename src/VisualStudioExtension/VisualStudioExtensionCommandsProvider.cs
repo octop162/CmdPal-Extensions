@@ -6,31 +6,32 @@ using Microsoft.CmdPal.Extensions;
 using Microsoft.CmdPal.Extensions.Helpers;
 using VisualStudioExtension.Pages;
 
-namespace VisualStudioExtension;
-
-internal partial class VisualStudioExtensionCommandsProvider : CommandProvider
+namespace VisualStudioExtension
 {
-    private readonly VisualStudioService _visualStudioService;
-    private readonly SettingsManager _settingsManager;
-
-    public VisualStudioExtensionCommandsProvider(SettingsManager settingsManager, VisualStudioService visualStudioService)
+    internal partial class VisualStudioExtensionCommandsProvider : CommandProvider
     {
-        _settingsManager = settingsManager;
-        _visualStudioService = visualStudioService;
+        private readonly VisualStudioService _visualStudioService;
+        private readonly SettingsManager _settingsManager;
 
-        _commands =
-        [
-            new CommandItem(new VisualStudioExtensionPage(_settingsManager, _visualStudioService))
-            {
-                Subtitle = "Description".GetLocalized(),
-            }
-        ];
-    }
+        public VisualStudioExtensionCommandsProvider(SettingsManager settingsManager, VisualStudioService visualStudioService)
+        {
+            _settingsManager = settingsManager;
+            _visualStudioService = visualStudioService;
 
-    private readonly ICommandItem[] _commands;
+            _commands =
+            [
+                new CommandItem(new VisualStudioExtensionPage(_settingsManager, _visualStudioService))
+                {
+                    Subtitle = "Description".GetLocalized(),
+                }
+            ];
+        }
 
-    public override ICommandItem[] TopLevelCommands()
-    {
-        return _commands;
+        private readonly ICommandItem[] _commands;
+
+        public override ICommandItem[] TopLevelCommands()
+        {
+            return _commands;
+        }
     }
 }
