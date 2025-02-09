@@ -15,4 +15,4 @@ Windows Command Palette is still in the development phase. To try these extensio
 ## Contributing
 
 - **New Extensions:** I’m not accepting PRs for new extensions. If you have a new idea, feel free to create your own project!
-- **Fixes & Improvements:** I do accept PRs for bug fixes and improvements to existing code. However, please ensure that you file an issue and receive feedback before starting any work, to avoid the risk of your PR being rejected.
+- **Fixes & Improvements:** I do accept PRs for bug fixes and improvements to existing code. However, to avoid the risk of your PR being rejected, please ensure that you file an issue and receive feedback before starting any work.
