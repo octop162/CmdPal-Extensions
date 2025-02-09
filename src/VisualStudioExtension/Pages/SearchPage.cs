@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Community.PowerToys.Run.Plugin.VisualStudio.Core.Services;
@@ -10,12 +11,12 @@ using Microsoft.CommandPalette.Extensions.Toolkit;
 
 namespace VisualStudioExtension.Pages
 {
-    internal sealed partial class VisualStudioPage : ListPage
+    internal sealed partial class SearchPage : DynamicListPage
     {
         private readonly VisualStudioService _visualStudioService;
         private readonly SettingsManager _settingsManager;
 
-        public VisualStudioPage(SettingsManager settingsManager, VisualStudioService visualStudioService)
+        public SearchPage(SettingsManager settingsManager, VisualStudioService visualStudioService)
         {
             _settingsManager = settingsManager;
             _visualStudioService = visualStudioService;
@@ -27,12 +28,23 @@ namespace VisualStudioExtension.Pages
             Icon = new(new(lightIcon), new(darkIcon));
         }
 
-        public override IListItem[] GetItems()
+        public override void UpdateSearchText(string oldSearch, string newSearch) => RaiseItemsChanged(0);
+
+        public override IListItem[] GetItems() => Search().OrderBy(r => r.Title).ToArray();
+
+        private IEnumerable<CodeContainerListItem> Search()
         {
-            return _visualStudioService
-                .GetResults(_settingsManager.ShowPrerelease)
-                .Select(r => new CodeContainerListItem(r, _settingsManager))
-                .ToArray();
+            var emptyQuery = string.IsNullOrWhiteSpace(SearchText);
+
+            foreach (var r in _visualStudioService.GetResults(_settingsManager.ShowPrerelease))
+            {
+                var score = StringMatcher.FuzzySearch(SearchText, r.Name);
+
+                if (emptyQuery || score.Score > 0)
+                {
+                    yield return new CodeContainerListItem(r, _settingsManager);
+                }
+            }
         }
     }
 }

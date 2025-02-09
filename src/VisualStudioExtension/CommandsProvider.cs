@@ -12,6 +12,7 @@ namespace VisualStudioExtension
     {
         private readonly SettingsManager _settingsManager;
         private readonly VisualStudioService _visualStudioService;
+        private readonly ICommandItem[] _commands;
 
         public CommandsProvider(SettingsManager settingsManager, VisualStudioService visualStudioService)
         {
@@ -20,18 +21,13 @@ namespace VisualStudioExtension
 
             _commands =
             [
-                new CommandItem(new VisualStudioPage(_settingsManager, _visualStudioService))
+                new CommandItem(new SearchPage(_settingsManager, _visualStudioService))
                 {
                     Subtitle = "Description".GetLocalized(),
                 }
             ];
         }
 
-        private readonly ICommandItem[] _commands;
-
-        public override ICommandItem[] TopLevelCommands()
-        {
-            return _commands;
-        }
+        public override ICommandItem[] TopLevelCommands() => _commands;
     }
 }

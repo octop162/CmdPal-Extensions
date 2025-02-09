@@ -1,4 +1,4 @@
-// Copyright (c) Davide Giacometti. All rights reserved.
+﻿// Copyright (c) Davide Giacometti. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using Microsoft.CommandPalette.Extensions.Toolkit;
 
 namespace EdgeFavoritesExtension.Pages
 {
-    internal sealed partial class SearchPage : ListPage
+    internal sealed partial class SearchPage : DynamicListPage
     {
         private readonly EdgeManager _edgeManager;
         private readonly FavoriteQuery _favoriteQuery;
@@ -25,15 +25,28 @@ namespace EdgeFavoritesExtension.Pages
             Icon = new("\uE728");
         }
 
+        public override void UpdateSearchText(string oldSearch, string newSearch) => RaiseItemsChanged(0);
+
         public override IListItem[] GetItems()
         {
-            if (_edgeManager.ChannelDetected)
+            if (!_edgeManager.ChannelDetected)
             {
-                return Search().OrderBy(r => r.Title).ToArray();
+                return [];
+            }
+
+            if (_settingsManager.SearchTree)
+            {
+                return _favoriteQuery
+                    .Search(SearchText)
+                    .OrderBy(f => f.Type)
+                    .ThenBy(f => f.Name)
+                    .Where(f => !f.IsEmptySpecialFolder)
+                    .Select(f => new FavoriteListItem(f, _edgeManager, _settingsManager))
+                    .ToArray();
             }
             else
             {
-                return [];
+                return Search().OrderBy(r => r.Title).ToArray();
             }
         }
 

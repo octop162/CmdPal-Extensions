@@ -13,6 +13,7 @@ namespace EdgeFavoritesExtension
         private readonly SettingsManager _settingsManager;
         private readonly EdgeManager _edgeManager;
         private readonly FavoriteQuery _favoriteQuery;
+        private readonly ICommandItem[] _commands;
 
         public CommandsProvider(SettingsManager settingsManager, EdgeManager edgeManager, FavoriteQuery favoriteQuery)
         {
@@ -22,17 +23,13 @@ namespace EdgeFavoritesExtension
 
             _commands =
             [
-                _settingsManager.SearchTree
-                    ? new CommandItem(new TreePage(_edgeManager, _favoriteQuery, _settingsManager))
-                    : new CommandItem(new SearchPage(_edgeManager, _favoriteQuery, _settingsManager))
+                new CommandItem(new SearchPage(_edgeManager, _favoriteQuery, _settingsManager))
+                {
+                    Subtitle = "Description".GetLocalized(),
+                }
             ];
         }
 
-        private readonly ICommandItem[] _commands;
-
-        public override ICommandItem[] TopLevelCommands()
-        {
-            return _commands;
-        }
+        public override ICommandItem[] TopLevelCommands() => _commands;
     }
 }
