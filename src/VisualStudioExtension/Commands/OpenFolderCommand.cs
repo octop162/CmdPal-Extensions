@@ -5,8 +5,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using Community.PowerToys.Run.Plugin.VisualStudio.Core.Models;
-using Microsoft.CmdPal.Extensions;
-using Microsoft.CmdPal.Extensions.Helpers;
+using Microsoft.CommandPalette.Extensions;
+using Microsoft.CommandPalette.Extensions.Toolkit;
 
 namespace VisualStudioExtension.Commands
 {

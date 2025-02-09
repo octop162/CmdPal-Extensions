@@ -4,7 +4,7 @@
 using System.Globalization;
 using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Models;
 using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Services;
-using Microsoft.CmdPal.Extensions.Helpers;
+using Microsoft.CommandPalette.Extensions.Toolkit;
 
 namespace EdgeFavoritesExtension.Commands
 {

@@ -1,6 +1,6 @@
 <Project>
   <ItemGroup>
-    <PackageVersion Include="Microsoft.CmdPal.Extensions.SDK" Version="0.0.2" />
+    <PackageVersion Include="Microsoft.CommandPalette.Extensions" Version="0.0.1" />
     <PackageVersion Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
     <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
   </ItemGroup>

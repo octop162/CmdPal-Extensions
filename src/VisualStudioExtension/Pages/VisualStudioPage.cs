@@ -5,8 +5,8 @@ using System;
 using System.IO;
 using System.Linq;
 using Community.PowerToys.Run.Plugin.VisualStudio.Core.Services;
-using Microsoft.CmdPal.Extensions;
-using Microsoft.CmdPal.Extensions.Helpers;
+using Microsoft.CommandPalette.Extensions;
+using Microsoft.CommandPalette.Extensions.Toolkit;
 
 namespace VisualStudioExtension.Pages
 {

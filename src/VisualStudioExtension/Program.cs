@@ -3,7 +3,7 @@
 
 using System;
 using System.Threading;
-using Microsoft.CmdPal.Extensions;
+using Microsoft.CommandPalette.Extensions;
 
 namespace VisualStudioExtension
 {

@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Community.PowerToys.Run.Plugin.VisualStudio.Core;
 using Community.PowerToys.Run.Plugin.VisualStudio.Core.Services;
-using Microsoft.CmdPal.Extensions;
-using Microsoft.CmdPal.Extensions.Helpers;
+using Microsoft.CommandPalette.Extensions;
+using Microsoft.CommandPalette.Extensions.Toolkit;
 
 namespace VisualStudioExtension
 {

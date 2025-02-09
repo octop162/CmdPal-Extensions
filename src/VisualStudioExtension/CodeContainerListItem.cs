@@ -2,8 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Community.PowerToys.Run.Plugin.VisualStudio.Core.Models;
-using Microsoft.CmdPal.Extensions;
-using Microsoft.CmdPal.Extensions.Helpers;
+using Microsoft.CommandPalette.Extensions.Toolkit;
 using VisualStudioExtension.Commands;
 using VisualStudioExtension.Pages;
 

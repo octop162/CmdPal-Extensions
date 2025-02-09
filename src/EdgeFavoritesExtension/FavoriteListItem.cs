@@ -8,8 +8,8 @@ using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Models;
 using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Services;
 using EdgeFavoritesExtension.Commands;
 using EdgeFavoritesExtension.Pages;
-using Microsoft.CmdPal.Extensions;
-using Microsoft.CmdPal.Extensions.Helpers;
+using Microsoft.CommandPalette.Extensions;
+using Microsoft.CommandPalette.Extensions.Toolkit;
 
 namespace EdgeFavoritesExtension
 {
@@ -25,7 +25,7 @@ namespace EdgeFavoritesExtension
                 Subtitle = settingsManager.SearchTree
                     ? string.Format(CultureInfo.CurrentCulture, "FolderResult_Profile_Subtitle".GetLocalized(), favorite.Path, favorite.Profile.Name)
                     : string.Format(CultureInfo.CurrentCulture, "FolderResult_Subtitle".GetLocalized(), favorite.Path);
-                Icon = new("\uE8B7");
+                Icon = new IconInfo("\uE8B7");
                 TextToSuggest = $"{favorite.Path}/";
                 MoreCommands = GetMoreCommands(favorite, edgeManager, settingsManager);
             }
@@ -36,7 +36,7 @@ namespace EdgeFavoritesExtension
                 Subtitle = settingsManager.SearchTree
                     ? string.Format(CultureInfo.CurrentCulture, "FavoriteResult_Profile_Subtitle".GetLocalized(), favorite.Path, favorite.Profile.Name)
                     : string.Format(CultureInfo.CurrentCulture, "FavoriteResult_Subtitle".GetLocalized(), favorite.Path);
-                Icon = new("\uE734");
+                Icon = new IconInfo("\uE734");
                 TextToSuggest = favorite.Path;
                 MoreCommands = GetMoreCommands(favorite, edgeManager, settingsManager);
             }

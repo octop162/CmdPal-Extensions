@@ -3,8 +3,8 @@
 
 using System.Linq;
 using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Services;
-using Microsoft.CmdPal.Extensions;
-using Microsoft.CmdPal.Extensions.Helpers;
+using Microsoft.CommandPalette.Extensions;
+using Microsoft.CommandPalette.Extensions.Toolkit;
 
 namespace EdgeFavoritesExtension.Pages
 {
