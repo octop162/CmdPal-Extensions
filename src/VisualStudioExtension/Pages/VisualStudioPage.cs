@@ -10,12 +10,12 @@ using Microsoft.CmdPal.Extensions.Helpers;
 
 namespace VisualStudioExtension.Pages
 {
-    internal sealed partial class VisualStudioExtensionPage : ListPage
+    internal sealed partial class VisualStudioPage : ListPage
     {
         private readonly VisualStudioService _visualStudioService;
         private readonly SettingsManager _settingsManager;
 
-        public VisualStudioExtensionPage(SettingsManager settingsManager, VisualStudioService visualStudioService)
+        public VisualStudioPage(SettingsManager settingsManager, VisualStudioService visualStudioService)
         {
             _settingsManager = settingsManager;
             _visualStudioService = visualStudioService;

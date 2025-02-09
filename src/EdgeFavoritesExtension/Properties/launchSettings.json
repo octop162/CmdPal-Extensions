@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "EdgeFavoritesExtension (Package)": {
+      "commandName": "MsixPackage",
+      "commandLineArgs": "-RegisterProcessAsComServer"
+    },
+    "EdgeFavoritesExtension (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

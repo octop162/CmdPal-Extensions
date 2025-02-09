@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdgeFavoritesExtension", "EdgeFavoritesExtension\EdgeFavoritesExtension.csproj", "{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -31,6 +33,18 @@ Global
 		{6B869C4F-765A-47E5-93BF-284A1C282BE1}.Release|x64.ActiveCfg = Release|x64
 		{6B869C4F-765A-47E5-93BF-284A1C282BE1}.Release|x64.Build.0 = Release|x64
 		{6B869C4F-765A-47E5-93BF-284A1C282BE1}.Release|x64.Deploy.0 = Release|x64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Debug|ARM64.Build.0 = Debug|ARM64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Debug|x64.ActiveCfg = Debug|x64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Debug|x64.Build.0 = Debug|x64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Debug|x64.Deploy.0 = Debug|x64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Release|ARM64.ActiveCfg = Release|ARM64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Release|ARM64.Build.0 = Release|ARM64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Release|ARM64.Deploy.0 = Release|ARM64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Release|x64.ActiveCfg = Release|x64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Release|x64.Build.0 = Release|x64
+		{39B3CAC3-2738-4D63-B1F1-ED7E3ACAEB2A}.Release|x64.Deploy.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

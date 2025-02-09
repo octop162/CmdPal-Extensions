@@ -4,39 +4,45 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Community.PowerToys.Run.Plugin.VisualStudio.Core;
-using Community.PowerToys.Run.Plugin.VisualStudio.Core.Services;
+using Community.PowerToys.Run.Plugin.EdgeFavorite.Core;
+using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Services;
 using Microsoft.CmdPal.Extensions;
 using Microsoft.CmdPal.Extensions.Helpers;
 
-namespace VisualStudioExtension
+namespace EdgeFavoritesExtension
 {
     [ComVisible(true)]
-    [Guid("b6f2e125-fa86-4e65-b787-5f98b672bff3")]
+    [Guid("e5363d08-aa2b-4af8-aa0a-8a9dfc45e491")]
     [ComDefaultInterface(typeof(IExtension))]
-    public sealed partial class VisualStudioExtension : IExtension, IDisposable
+    public sealed partial class EdgeFavoritesExtension : IExtension, IDisposable
     {
         private readonly ManualResetEvent _extensionDisposedEvent;
         private readonly SettingsManager _settingsManager;
         private readonly Settings _settings;
         private readonly ILogger _logger;
-        private readonly VisualStudioService _visualStudioService;
+        private readonly EdgeManager _edgeManager;
+        private readonly ProfileManager _profileManager;
+        private readonly FavoriteQuery _favoriteQuery;
 
         private readonly CommandsProvider _provider;
 
-        public VisualStudioExtension(ManualResetEvent extensionDisposedEvent)
+        public EdgeFavoritesExtension(ManualResetEvent extensionDisposedEvent)
         {
             _extensionDisposedEvent = extensionDisposedEvent;
 
             _settingsManager = new SettingsManager();
             _logger = new Logger();
-            _visualStudioService = new VisualStudioService(_logger);
-            _provider = new CommandsProvider(_settingsManager, _visualStudioService);
+            _settingsManager = new SettingsManager();
+            _logger = new Logger();
+            _edgeManager = new EdgeManager(_logger);
+            _profileManager = new ProfileManager(_logger, _edgeManager);
+            _favoriteQuery = new FavoriteQuery(_profileManager);
+            _provider = new CommandsProvider(_settingsManager, _edgeManager, _favoriteQuery);
 
             _settings = _settingsManager.Settings;
             _settings.SettingsChanged += SettingsChanged;
 
-            InitInstances();
+            Initialize();
         }
 
         public object? GetProvider(ProviderType providerType)
@@ -50,11 +56,12 @@ namespace VisualStudioExtension
 
         public void Dispose() => _extensionDisposedEvent.Set();
 
-        private void SettingsChanged(object sender, Settings args)
-        {
-            InitInstances();
-        }
+        private void SettingsChanged(object sender, Settings args) => Initialize();
 
-        private void InitInstances() => _visualStudioService.InitInstances(_settingsManager.ExcludedVersions);
+        private void Initialize()
+        {
+            _edgeManager.Initialize(_settingsManager.Channel);
+            _profileManager.ReloadProfiles(_settingsManager.ExcludedProfiles);
+        }
     }
 }
