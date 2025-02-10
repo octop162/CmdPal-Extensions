@@ -120,38 +120,89 @@
   <data name="Command_Open" xml:space="preserve">
     <value>Apri</value>
   </data>
-  <data name="Command_OpenAsAdministrator" xml:space="preserve">
-    <value>Apri come amministratore</value>
+  <data name="Command_OpenAll" xml:space="preserve">
+    <value>Apri tutto ({0})</value>
+    <comment>{0} is the number of favorites</comment>
   </data>
-  <data name="Command_OpenFolder" xml:space="preserve">
-    <value>Apri cartella</value>
+  <data name="Command_OpenAllPrivate" xml:space="preserve">
+    <value>Apri tutto ({0}) in una finestra InPrivate</value>
+    <comment>{0} is the number of favorites</comment>
+  </data>
+  <data name="Command_OpenAllWindow" xml:space="preserve">
+    <value>Apri tutto ({0}) in una finestra</value>
+    <comment>{0} is the number of favorites</comment>
+  </data>
+  <data name="Command_OpenPrivate" xml:space="preserve">
+    <value>Apri in una finestra InPrivate</value>
+  </data>
+  <data name="Command_OpenWindow" xml:space="preserve">
+    <value>Apri in una nuova finestra</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Apre i recenti di Visual Studio</value>
+    <value>Apre i preferiti di Microsoft Edge</value>
+  </data>
+  <data name="FavoriteResult_Profile_Subtitle" xml:space="preserve">
+    <value>Preferito: {0} - {1}</value>
+    <comment>{0} is the favorite path, {1} is the profile name</comment>
+  </data>
+  <data name="FavoriteResult_Subtitle" xml:space="preserve">
+    <value>Preferito: {0}</value>
+    <comment>{0} is the favorite path</comment>
+  </data>
+  <data name="FolderResult_Profile_Subtitle" xml:space="preserve">
+    <value>Cartella: {0} - {1}</value>
+    <comment>{0} is the folder path, {1} is the profile name</comment>
+  </data>
+  <data name="FolderResult_Subtitle" xml:space="preserve">
+    <value>Cartella: {0}</value>
+    <comment>{0} is the folder path</comment>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Visual Studio</value>
+    <value>Preferiti Edge</value>
   </data>
-  <data name="Result_Subtitle" xml:space="preserve">
-    <value>{0}: {1}</value>
-    <comment>{0} is the Visual Studio instance name, {1} is the path</comment>
+  <data name="SearchMode_Flat" xml:space="preserve">
+    <value>Piatta (preferiti e cartelle)</value>
+  </data>
+  <data name="SearchMode_FlatFavorites" xml:space="preserve">
+    <value>Piatta (solo preferiti)</value>
+  </data>
+  <data name="SearchMode_Tree" xml:space="preserve">
+    <value>Albero</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Impostazioni</value>
   </data>
-  <data name="Setting_ExcludedVersions_Description" xml:space="preserve">
-    <value>Aggiungi più versioni separate da uno spazio</value>
+  <data name="Setting_ExcludedProfiles_Label" xml:space="preserve">
+    <value>Profili esclusi</value>
   </data>
-  <data name="Setting_ExcludedVersions_Placeholder" xml:space="preserve">
-    <value>Esempio: 2019 2022</value>
+  <data name="Setting_Channel_Description" xml:space="preserve">
+    <value>Seleziona il canale da utilizzare</value>
   </data>
-  <data name="Setting_ExcludedVersions_Label" xml:space="preserve">
-    <value>Versioni escluse</value>
+  <data name="Setting_SearchMode_Description" xml:space="preserve">
+    <value>Specifica come vengono cercati i preferiti</value>
   </data>
-  <data name="Setting_ShowPrerelease_Description" xml:space="preserve">
-    <value>Includi i risultati dalle prerelease</value>
+  <data name="Setting_SearchMode_Label" xml:space="preserve">
+    <value>Modalità di ricerca</value>
   </data>
-  <data name="Setting_ShowPrerelease_Label" xml:space="preserve">
-    <value>Mostra prerelease</value>
+  <data name="Setting_ExcludedProfiles_Description" xml:space="preserve">
+    <value>Impedisce il caricamento dei preferiti dai profili specificati, aggiungi un profilo per riga</value>
+  </data>
+  <data name="Setting_Channel_Label" xml:space="preserve">
+    <value>Canale</value>
+  </data>
+  <data name="Channel_Stable" xml:space="preserve">
+    <value>Stabile</value>
+  </data>
+  <data name="Channel_Beta" xml:space="preserve">
+    <value>Beta</value>
+  </data>
+  <data name="Channel_Dev" xml:space="preserve">
+    <value>Sviluppo</value>
+  </data>
+  <data name="Channel_Canary" xml:space="preserve">
+    <value>Canary</value>
+  </data>
+  <data name="Setting_ExcludedProfiles_Placeholder" xml:space="preserve">
+    <value>Esempio: Personale</value>
   </data>
 </root>

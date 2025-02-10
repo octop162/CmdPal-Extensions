@@ -2,32 +2,49 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.IO;
 using System.Runtime.CompilerServices;
-using Community.PowerToys.Run.Plugin.EdgeFavorite.Core;
+using Serilog;
+using Windows.Storage;
+using ILogger = Community.PowerToys.Run.Plugin.EdgeFavorite.Core.ILogger;
 
 namespace EdgeFavoritesExtension
 {
     internal class Logger : ILogger
     {
-        // TODO implement basic logging
+        public Logger()
+        {
+            var path = Path.Combine(ApplicationData.Current.TemporaryFolder.Path, "Logs", "Log.log");
+
+            Log.Logger = new LoggerConfiguration()
+               .MinimumLevel.Information()
+               .WriteTo.File(path, rollingInterval: RollingInterval.Day)
+               .CreateLogger();
+        }
+
         public void LogDebug(string message, Type fullClassName, [CallerMemberName] string methodName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
         {
+            Log.Debug(message);
         }
 
         public void LogError(string message, Type fullClassName, [CallerMemberName] string methodName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
         {
+            Log.Error(message);
         }
 
         public void LogError(Exception exception, string message, Type fullClassName, [CallerMemberName] string methodName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
         {
+            Log.Error(exception, message);
         }
 
         public void LogInformation(string message, Type fullClassName, [CallerMemberName] string methodName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
         {
+            Log.Information(message);
         }
 
         public void LogWarning(string message, Type fullClassName, [CallerMemberName] string methodName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
         {
+            Log.Warning(message);
         }
     }
 }

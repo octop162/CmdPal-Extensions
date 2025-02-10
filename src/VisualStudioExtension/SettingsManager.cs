@@ -30,6 +30,7 @@ namespace VisualStudioExtension
         {
             FilePath = SettingsJsonPath();
 
+            _excludedVersions.Placeholder = "Setting_ExcludedVersions_Placeholder".GetLocalized();
             Settings.Add(_showPrerelease);
             Settings.Add(_excludedVersions);
 

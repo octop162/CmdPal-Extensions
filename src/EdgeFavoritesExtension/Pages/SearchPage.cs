@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Models;
 using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Services;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
@@ -34,7 +35,7 @@ namespace EdgeFavoritesExtension.Pages
                 return [];
             }
 
-            if (_settingsManager.SearchTree)
+            if (_settingsManager.SearchMode == SearchMode.Tree)
             {
                 return _favoriteQuery
                     .Search(SearchText)
@@ -56,6 +57,11 @@ namespace EdgeFavoritesExtension.Pages
 
             foreach (var f in _favoriteQuery.GetAll().Where(f => !f.IsEmptySpecialFolder))
             {
+                if (f.Type == FavoriteType.Folder && _settingsManager.SearchMode == SearchMode.FlatFavorites)
+                {
+                    continue;
+                }
+
                 var score = StringMatcher.FuzzySearch(SearchText, f.Name);
 
                 if (emptyQuery || score.Score > 0)

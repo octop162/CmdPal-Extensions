@@ -11,30 +11,34 @@ namespace EdgeFavoritesExtension
 {
     internal class SettingsManager : JsonSettingsManager
     {
-        private readonly ToggleSetting _searchTree = new(
-            nameof(SearchTree),
-            "Search as tree",
-            "Navigate the folder tree when searching (requires Command Palette restart).",
-            false);
+        private readonly ChoiceSetSetting _searchMode = new(
+            nameof(SearchMode),
+            "Setting_SearchMode_Label".GetLocalized(),
+            "Setting_SearchMode_Description".GetLocalized(),
+            [
+                new("SearchMode_Flat".GetLocalized(), "Flat"),
+                new("SearchMode_FlatFavorites".GetLocalized(), "FlatFavorites"),
+                new("SearchMode_Tree".GetLocalized(), "Tree"),
+            ]);
 
         private readonly TextSetting _excludedProfiles = new(
            nameof(ExcludedProfiles),
-           "Excluded profiles",
-           "Prevents favorites from the specified profiles to be loaded. Add one profile per line.",
+           "Setting_ExcludedProfiles_Label".GetLocalized(),
+           "Setting_ExcludedProfiles_Description".GetLocalized(),
            string.Empty);
 
         private readonly ChoiceSetSetting _channel = new(
             nameof(Channel),
-            "Channel",
-            "Select the channel to use.",
+            "Setting_Channel_Label".GetLocalized(),
+            "Setting_Channel_Description".GetLocalized(),
             [
-                new("Stable", "Stable"),
-                new("Beta", "Beta"),
-                new("Dev", "Dev"),
-                new("Canary", "Canary"),
+                new("Channel_Stable".GetLocalized(), "Stable"),
+                new("Channel_Beta".GetLocalized(), "Beta"),
+                new("Channel_Dev".GetLocalized(), "Dev"),
+                new("Channel_Canary".GetLocalized(), "Canary"),
             ]);
 
-        public bool SearchTree => _searchTree.Value;
+        public SearchMode SearchMode => _searchMode.Value != null && Enum.TryParse(_searchMode.Value.ToString(), out SearchMode searchMode) ? searchMode : SearchMode.Flat;
 
         public string[] ExcludedProfiles => _excludedProfiles.Value?.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries).ToArray() ?? [];
 
@@ -44,7 +48,8 @@ namespace EdgeFavoritesExtension
         {
             FilePath = SettingsJsonPath();
 
-            Settings.Add(_searchTree);
+            _excludedProfiles.Placeholder = "Setting_ExcludedProfiles_Placeholder".GetLocalized();
+            Settings.Add(_searchMode);
             Settings.Add(_excludedProfiles);
             Settings.Add(_channel);
 

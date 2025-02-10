@@ -4,6 +4,7 @@
 using System;
 using System.Threading;
 using Microsoft.CommandPalette.Extensions;
+using Serilog;
 
 namespace VisualStudioExtension
 {
@@ -12,6 +13,8 @@ namespace VisualStudioExtension
         [MTAThread]
         public static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.UnhandledException += AppDomain_UnhandledException;
+
             if (args.Length > 0 && args[0] == "-RegisterProcessAsComServer")
             {
                 using ExtensionServer server = new();
@@ -20,6 +23,13 @@ namespace VisualStudioExtension
                 server.RegisterExtension(() => extensionInstance);
                 extensionDisposedEvent.WaitOne();
             }
+        }
+
+        private static void AppDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            var exception = (Exception)e.ExceptionObject;
+            Log.Fatal(exception, "Unhandled exception");
+            Log.CloseAndFlush();
         }
     }
 }

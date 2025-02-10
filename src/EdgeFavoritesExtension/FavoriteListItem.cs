@@ -22,7 +22,7 @@ namespace EdgeFavoritesExtension
             {
                 Command = new NoOpCommand();
                 Title = favorite.Name;
-                Subtitle = settingsManager.SearchTree
+                Subtitle = settingsManager.SearchMode == SearchMode.Tree
                     ? string.Format(CultureInfo.CurrentCulture, "FolderResult_Profile_Subtitle".GetLocalized(), favorite.Path, favorite.Profile.Name)
                     : string.Format(CultureInfo.CurrentCulture, "FolderResult_Subtitle".GetLocalized(), favorite.Path);
                 Icon = new IconInfo("\uE8B7");
@@ -33,7 +33,7 @@ namespace EdgeFavoritesExtension
             {
                 Command = new OpenEdgeCommand(edgeManager, favorite, false, false);
                 Title = favorite.Name;
-                Subtitle = settingsManager.SearchTree
+                Subtitle = settingsManager.SearchMode == SearchMode.Tree
                     ? string.Format(CultureInfo.CurrentCulture, "FavoriteResult_Profile_Subtitle".GetLocalized(), favorite.Path, favorite.Profile.Name)
                     : string.Format(CultureInfo.CurrentCulture, "FavoriteResult_Subtitle".GetLocalized(), favorite.Path);
                 Icon = new IconInfo("\uE734");
