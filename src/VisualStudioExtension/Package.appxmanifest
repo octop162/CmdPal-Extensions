@@ -9,12 +9,12 @@
   IgnorableNamespaces="uap uap3 rescap">
 
   <Identity
-    Name="VisualStudioExtension"
-    Publisher="CN=Davide Giacometti"
+    Name="DavideGiacometti.VisualStudioForCmdPal"
+    Publisher="CN=C9D582B0-A0F7-4AF0-8AEA-38A75D06CD89"
     Version="0.0.1.0" />
 
   <Properties>
-    <DisplayName>Visual Studio Extension</DisplayName>
+    <DisplayName>Visual Studio For CmdPal</DisplayName>
     <PublisherDisplayName>Davide Giacometti</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -34,8 +34,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Visual Studio Extension"
-        Description="Visual Studio Extension"
+        DisplayName="Visual Studio Extension For Command Palette"
+        Description="Visual Studio Extension For Command Palette"
         AppListEntry="none"
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
