@@ -20,6 +20,8 @@ namespace EdgeFavoritesExtension
             _settingsManager = settingsManager;
             _edgeManager = edgeManager;
             _favoriteQuery = favoriteQuery;
+            Settings = _settingsManager.Settings;
+            Icon = new("\uE728");
 
             _commands =
             [

@@ -4,7 +4,6 @@
 using Community.PowerToys.Run.Plugin.VisualStudio.Core.Models;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 using VisualStudioExtension.Commands;
-using VisualStudioExtension.Pages;
 
 namespace VisualStudioExtension
 {
@@ -25,7 +24,6 @@ namespace VisualStudioExtension
                 new CommandContextItem(new OpenVisualStudioCommand(codeContainer, true)),
                 new CommandContextItem(new CopyTextCommand(codeContainer.FullPath)),
                 new CommandContextItem(new OpenFolderCommand(codeContainer)),
-                new CommandContextItem(new SettingsPage(_settingsManager)),
             ];
         }
     }

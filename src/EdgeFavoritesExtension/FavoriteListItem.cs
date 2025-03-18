@@ -7,7 +7,6 @@ using System.Linq;
 using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Models;
 using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Services;
 using EdgeFavoritesExtension.Commands;
-using EdgeFavoritesExtension.Pages;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 
@@ -57,7 +56,6 @@ namespace EdgeFavoritesExtension
                     [
                         new CommandContextItem(new OpenEdgeCommand(edgeManager, favorites, false, true)),
                         new CommandContextItem(new OpenEdgeCommand(edgeManager, favorites, true, false)),
-                        new CommandContextItem(new SettingsPage(settingsManager)),
                     ];
                 }
             }
@@ -68,7 +66,6 @@ namespace EdgeFavoritesExtension
                     new CommandContextItem(new CopyTextCommand(favorite.Url!)),
                     new CommandContextItem(new OpenEdgeCommand(edgeManager, favorite, false, true)),
                     new CommandContextItem(new OpenEdgeCommand(edgeManager, favorite, true, false)),
-                    new CommandContextItem(new SettingsPage(settingsManager)),
                 ];
             }
 
