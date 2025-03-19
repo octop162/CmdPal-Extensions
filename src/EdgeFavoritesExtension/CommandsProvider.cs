@@ -21,6 +21,7 @@ namespace EdgeFavoritesExtension
             _edgeManager = edgeManager;
             _favoriteQuery = favoriteQuery;
             Settings = _settingsManager.Settings;
+            DisplayName = "Name".GetLocalized();
             Icon = new("\uE728");
 
             _commands =

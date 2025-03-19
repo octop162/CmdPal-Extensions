@@ -23,6 +23,7 @@ namespace VisualStudioExtension
             _settingsManager = settingsManager;
             _visualStudioService = visualStudioService;
             Settings = _settingsManager.Settings;
+            DisplayName = "Name".GetLocalized();
             Icon = new(new(_lightIcon), new(_darkIcon));
 
             _commands =
