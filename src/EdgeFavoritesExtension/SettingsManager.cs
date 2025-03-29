@@ -40,7 +40,7 @@ namespace EdgeFavoritesExtension
 
         public SearchMode SearchMode => _searchMode.Value != null && Enum.TryParse(_searchMode.Value.ToString(), out SearchMode searchMode) ? searchMode : SearchMode.Flat;
 
-        public string[] ExcludedProfiles => _excludedProfiles.Value?.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries).ToArray() ?? [];
+        public string[] ExcludedProfiles => _excludedProfiles.Value?.Split(["\r\n", "\r"], StringSplitOptions.RemoveEmptyEntries).ToArray() ?? [];
 
         public Channel Channel => _channel.Value != null && Enum.TryParse(_channel.Value.ToString(), out Channel channel) ? channel : Channel.Stable;
 
