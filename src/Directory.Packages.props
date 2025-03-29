@@ -1,6 +1,6 @@
 <Project>
   <ItemGroup>
-    <PackageVersion Include="Microsoft.CommandPalette.Extensions" Version="0.0.1" />
+    <PackageVersion Include="Microsoft.CommandPalette.Extensions" Version="0.1.0" />
     <PackageVersion Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
     <PackageVersion Include="Serilog" Version="4.2.0" />
     <PackageVersion Include="Serilog.Sinks.File" Version="6.0.0" />
