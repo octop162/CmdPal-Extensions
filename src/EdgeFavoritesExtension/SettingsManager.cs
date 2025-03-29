@@ -49,11 +49,14 @@ namespace EdgeFavoritesExtension
             FilePath = SettingsJsonPath();
 
             _excludedProfiles.Placeholder = "Setting_ExcludedProfiles_Placeholder".GetLocalized();
+            _excludedProfiles.Multiline = true;
             Settings.Add(_searchMode);
             Settings.Add(_excludedProfiles);
             Settings.Add(_channel);
 
             LoadSettings();
+
+            Settings.SettingsChanged += (s, a) => SaveSettings();
         }
 
         private static string SettingsJsonPath()

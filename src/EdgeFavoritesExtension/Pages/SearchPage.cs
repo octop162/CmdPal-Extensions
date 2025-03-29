@@ -15,12 +15,14 @@ namespace EdgeFavoritesExtension.Pages
         private readonly EdgeManager _edgeManager;
         private readonly FavoriteQuery _favoriteQuery;
         private readonly SettingsManager _settingsManager;
+        private readonly ProfileManager _profileManger;
 
-        public SearchPage(EdgeManager edgeManager, FavoriteQuery favoriteQuery, SettingsManager settingsManager)
+        public SearchPage(EdgeManager edgeManager, FavoriteQuery favoriteQuery, SettingsManager settingsManager, ProfileManager profileManger)
         {
             _edgeManager = edgeManager;
             _favoriteQuery = favoriteQuery;
             _settingsManager = settingsManager;
+            _profileManger = profileManger;
 
             Name = "Name".GetLocalized();
             Icon = new("\uE728");
@@ -42,7 +44,7 @@ namespace EdgeFavoritesExtension.Pages
                     .OrderBy(f => f.Type)
                     .ThenBy(f => f.Name)
                     .Where(f => !f.IsEmptySpecialFolder)
-                    .Select(f => new FavoriteListItem(f, _edgeManager, _settingsManager))
+                    .Select(f => new FavoriteListItem(f, _edgeManager, _settingsManager, _profileManger))
                     .ToArray();
             }
             else
@@ -66,7 +68,7 @@ namespace EdgeFavoritesExtension.Pages
 
                 if (emptyQuery || score.Score > 0)
                 {
-                    yield return new FavoriteListItem(f, _edgeManager, _settingsManager);
+                    yield return new FavoriteListItem(f, _edgeManager, _settingsManager, _profileManger);
                 }
             }
         }

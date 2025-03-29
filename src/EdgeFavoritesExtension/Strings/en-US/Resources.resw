@@ -139,7 +139,7 @@
     <value>Open in new window</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Opens Microsoft Edge Favorites</value>
+    <value>Open Microsoft Edge Favorites</value>
   </data>
   <data name="FavoriteResult_Profile_Subtitle" xml:space="preserve">
     <value>Favorite: {0} - {1}</value>

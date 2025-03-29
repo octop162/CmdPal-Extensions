@@ -13,20 +13,22 @@ namespace EdgeFavoritesExtension
         private readonly SettingsManager _settingsManager;
         private readonly EdgeManager _edgeManager;
         private readonly FavoriteQuery _favoriteQuery;
+        private readonly ProfileManager _profileManager;
         private readonly ICommandItem[] _commands;
 
-        public CommandsProvider(SettingsManager settingsManager, EdgeManager edgeManager, FavoriteQuery favoriteQuery)
+        public CommandsProvider(SettingsManager settingsManager, EdgeManager edgeManager, FavoriteQuery favoriteQuery, ProfileManager profileManager)
         {
             _settingsManager = settingsManager;
             _edgeManager = edgeManager;
             _favoriteQuery = favoriteQuery;
+            _profileManager = profileManager;
             Settings = _settingsManager.Settings;
             DisplayName = "Name".GetLocalized();
             Icon = new("\uE728");
 
             _commands =
             [
-                new CommandItem(new SearchPage(_edgeManager, _favoriteQuery, _settingsManager))
+                new CommandItem(new SearchPage(_edgeManager, _favoriteQuery, _settingsManager, _profileManager))
                 {
                     Subtitle = "Description".GetLocalized(),
                 }

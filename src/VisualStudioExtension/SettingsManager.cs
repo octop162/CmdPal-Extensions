@@ -35,6 +35,8 @@ namespace VisualStudioExtension
             Settings.Add(_excludedVersions);
 
             LoadSettings();
+
+            Settings.SettingsChanged += (s, a) => SaveSettings();
         }
 
         private static string SettingsJsonPath()

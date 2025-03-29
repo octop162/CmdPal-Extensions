@@ -37,7 +37,7 @@ namespace EdgeFavoritesExtension
             _edgeManager = new EdgeManager(_logger);
             _profileManager = new ProfileManager(_logger, _edgeManager);
             _favoriteQuery = new FavoriteQuery(_profileManager);
-            _provider = new CommandsProvider(_settingsManager, _edgeManager, _favoriteQuery);
+            _provider = new CommandsProvider(_settingsManager, _edgeManager, _favoriteQuery, _profileManager);
 
             _settings = _settingsManager.Settings;
             _settings.SettingsChanged += SettingsChanged;
