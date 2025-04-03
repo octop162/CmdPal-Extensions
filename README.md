@@ -9,8 +9,18 @@ This monorepo is the home for my Windows Command Palette extensions.
 
 ## Installation
 
-Coming soon!  
-Windows Command Palette is still in the development phase. To try these extensions, you can fork the repository and build them.
+### Via Command Palette
+
+You can install the extensions directly from Command Palette.
+
+### Via WinGet
+
+You can install the extensions manually via [WinGet](https://learn.microsoft.com/windows/package-manager/winget/) running the following commands from the command line / PowerShell:
+
+```
+winget install davidegiacometti.VisualStudioForCmdPal
+winget install davidegiacometti.EdgeFavoritesForCmdPal
+```
 
 ## Contributing
 
