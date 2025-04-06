@@ -24,7 +24,10 @@ namespace EdgeFavoritesExtension
             _profileManager = profileManager;
             Settings = _settingsManager.Settings;
             DisplayName = "Name".GetLocalized();
-            Icon = new("\uE728");
+#if DEBUG
+            DisplayName += " (Dev)";
+#endif
+            Icon = Consts.Icon;
 
             _commands =
             [

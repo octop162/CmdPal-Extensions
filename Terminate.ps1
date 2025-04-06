@@ -1,3 +1,2 @@
-Stop-Process -Name "Microsoft.CmdPal.UI" -ErrorAction SilentlyContinue
-Stop-Process -Name "EdgeFavoritesExtension" -ErrorAction SilentlyContinue
-Stop-Process -Name "VisualStudioExtension" -ErrorAction SilentlyContinue
+Stop-Process -Name "EdgeFavoritesExtensionDev" -ErrorAction SilentlyContinue
+Stop-Process -Name "VisualStudioExtensionDev" -ErrorAction SilentlyContinue

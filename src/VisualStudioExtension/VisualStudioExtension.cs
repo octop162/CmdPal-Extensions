@@ -12,7 +12,11 @@ using Microsoft.CommandPalette.Extensions.Toolkit;
 namespace VisualStudioExtension
 {
     [ComVisible(true)]
+#if DEBUG
+    [Guid("2133155f-511c-4e4e-b7df-810f42d10a30")]
+#else
     [Guid("b6f2e125-fa86-4e65-b787-5f98b672bff3")]
+#endif
     [ComDefaultInterface(typeof(IExtension))]
     public sealed partial class VisualStudioExtension : IExtension, IDisposable
     {

@@ -12,7 +12,11 @@ using Microsoft.CommandPalette.Extensions.Toolkit;
 namespace EdgeFavoritesExtension
 {
     [ComVisible(true)]
+#if DEBUG
+    [Guid("2857c99a-97a3-460a-b81b-2e84da103dc9")]
+#else
     [Guid("e5363d08-aa2b-4af8-aa0a-8a9dfc45e491")]
+#endif
     [ComDefaultInterface(typeof(IExtension))]
     public sealed partial class EdgeFavoritesExtension : IExtension, IDisposable
     {

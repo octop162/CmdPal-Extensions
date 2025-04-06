@@ -23,9 +23,18 @@
   <PropertyGroup>
     <Version>0.0.1</Version>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <AssemblyName>EdgeFavoritesExtensionDev</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" Condition="'$(Configuration)' == 'Release'" />
+    <AppxManifest Include="Package-Dev.appxmanifest" Condition="'$(Configuration)' == 'Debug'" />
   </ItemGroup>
 
   <ItemGroup>

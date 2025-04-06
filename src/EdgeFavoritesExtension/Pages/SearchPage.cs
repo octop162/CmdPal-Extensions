@@ -25,7 +25,10 @@ namespace EdgeFavoritesExtension.Pages
             _profileManger = profileManger;
 
             Name = "Name".GetLocalized();
-            Icon = new("\uE728");
+#if DEBUG
+            Name += " (Dev)";
+#endif
+            Icon = Consts.Icon;
         }
 
         public override void UpdateSearchText(string oldSearch, string newSearch) => RaiseItemsChanged(0);

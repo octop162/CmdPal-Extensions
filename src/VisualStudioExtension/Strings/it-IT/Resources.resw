@@ -142,16 +142,22 @@
   <data name="Setting_ExcludedVersions_Description" xml:space="preserve">
     <value>Aggiungi più versioni separate da uno spazio</value>
   </data>
-  <data name="Setting_ExcludedVersions_Placeholder" xml:space="preserve">
-    <value>Esempio: 2019 2022</value>
-  </data>
   <data name="Setting_ExcludedVersions_Label" xml:space="preserve">
     <value>Versioni escluse</value>
+  </data>
+  <data name="Setting_ExcludedVersions_Placeholder" xml:space="preserve">
+    <value>Esempio: 2019 2022</value>
   </data>
   <data name="Setting_ShowPrerelease_Description" xml:space="preserve">
     <value>Includi i risultati dalle prerelease</value>
   </data>
   <data name="Setting_ShowPrerelease_Label" xml:space="preserve">
     <value>Mostra prerelease</value>
+  </data>
+  <data name="Setting_SortDate_Description" xml:space="preserve">
+    <value>Mostra i risultati ordinati per data</value>
+  </data>
+  <data name="Setting_SortDate_Label" xml:space="preserve">
+    <value>Ordina per data</value>
   </data>
 </root>

@@ -154,4 +154,10 @@
   <data name="Setting_ShowPrerelease_Label" xml:space="preserve">
     <value>Show prerelease</value>
   </data>
+  <data name="Setting_SortDate_Description" xml:space="preserve">
+    <value>Show results sorted by date</value>
+  </data>
+  <data name="Setting_SortDate_Label" xml:space="preserve">
+    <value>Sort by date</value>
+  </data>
 </root>
