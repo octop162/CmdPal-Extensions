@@ -35,7 +35,7 @@ namespace VisualStudioExtension.Pages
             }
             else
             {
-                items.OrderBy(i => i.Title);
+                items = items.OrderBy(i => i.Title);
             }
 
             return items.ToArray();

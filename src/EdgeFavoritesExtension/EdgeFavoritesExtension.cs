@@ -7,7 +7,6 @@ using System.Threading;
 using Community.PowerToys.Run.Plugin.EdgeFavorite.Core;
 using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Services;
 using Microsoft.CommandPalette.Extensions;
-using Microsoft.CommandPalette.Extensions.Toolkit;
 
 namespace EdgeFavoritesExtension
 {
@@ -22,7 +21,6 @@ namespace EdgeFavoritesExtension
     {
         private readonly ManualResetEvent _extensionDisposedEvent;
         private readonly SettingsManager _settingsManager;
-        private readonly Settings _settings;
         private readonly ILogger _logger;
         private readonly EdgeManager _edgeManager;
         private readonly ProfileManager _profileManager;
@@ -42,11 +40,6 @@ namespace EdgeFavoritesExtension
             _profileManager = new ProfileManager(_logger, _edgeManager);
             _favoriteQuery = new FavoriteQuery(_profileManager);
             _provider = new CommandsProvider(_settingsManager, _edgeManager, _favoriteQuery, _profileManager);
-
-            _settings = _settingsManager.Settings;
-            _settings.SettingsChanged += SettingsChanged;
-
-            Initialize();
         }
 
         public object? GetProvider(ProviderType providerType)
@@ -59,13 +52,5 @@ namespace EdgeFavoritesExtension
         }
 
         public void Dispose() => _extensionDisposedEvent.Set();
-
-        private void SettingsChanged(object sender, Settings args) => Initialize();
-
-        private void Initialize()
-        {
-            _edgeManager.Initialize(_settingsManager.Channel);
-            _profileManager.ReloadProfiles(_settingsManager.ExcludedProfiles);
-        }
     }
 }
