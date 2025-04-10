@@ -9,13 +9,17 @@ This monorepo is the home for my Windows Command Palette extensions.
 
 ## Installation
 
-### Via Command Palette
+### Command Palette
 
 You can install the extensions directly from Command Palette.
 
-### Via WinGet
+### WinGet
 
-You can install the extensions manually via [WinGet](https://learn.microsoft.com/windows/package-manager/winget/) running the following commands from the command line / PowerShell:
+You can install the extensions via [WinGet](https://learn.microsoft.com/windows/package-manager/winget/) running the following commands from the command line / PowerShell:
+
+### Manual
+
+You can install the extensions manually from [GitHub releases](https://github.com/davidegiacometti/CmdPal-Extensions/releases).
 
 ```
 winget install davidegiacometti.EdgeFavoritesForCmdPal
