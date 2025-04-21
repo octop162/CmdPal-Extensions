@@ -17,14 +17,14 @@ You can install the extensions directly from Command Palette.
 
 You can install the extensions via [WinGet](https://learn.microsoft.com/windows/package-manager/winget/) running the following commands from the command line / PowerShell:
 
-### Manual
-
-You can install the extensions manually from [GitHub releases](https://github.com/davidegiacometti/CmdPal-Extensions/releases).
-
 ```
 winget install davidegiacometti.EdgeFavoritesForCmdPal
 winget install davidegiacometti.VisualStudioForCmdPal
 ```
+
+### Manual
+
+You can install the extensions manually using the MSIX available in the [GitHub releases](https://github.com/davidegiacometti/CmdPal-Extensions/releases).
 
 ## Contributing
 
