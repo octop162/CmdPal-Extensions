@@ -9,6 +9,7 @@ using Community.PowerToys.Run.Plugin.EdgeFavorite.Core.Services;
 using EdgeFavoritesExtension.Commands;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
+using Windows.System;
 
 namespace EdgeFavoritesExtension
 {
@@ -54,8 +55,14 @@ namespace EdgeFavoritesExtension
                 {
                     return
                     [
-                        new CommandContextItem(new OpenEdgeCommand(edgeManager, favorites, false, true)),
-                        new CommandContextItem(new OpenEdgeCommand(edgeManager, favorites, true, false)),
+                        new CommandContextItem(new OpenEdgeCommand(edgeManager, favorites, false, true))
+                        {
+                            RequestedShortcut = KeyChordHelpers.FromModifiers(true, false, false, false, (int)VirtualKey.N, 0),
+                        },
+                        new CommandContextItem(new OpenEdgeCommand(edgeManager, favorites, true, false))
+                        {
+                            RequestedShortcut = KeyChordHelpers.FromModifiers(true, false, false, false, (int)VirtualKey.P, 0),
+                        },
                     ];
                 }
             }
@@ -63,9 +70,18 @@ namespace EdgeFavoritesExtension
             {
                 return
                 [
-                    new CommandContextItem(new CopyTextCommand(favorite.Url!)),
-                    new CommandContextItem(new OpenEdgeCommand(edgeManager, favorite, false, true)),
-                    new CommandContextItem(new OpenEdgeCommand(edgeManager, favorite, true, false)),
+                    new CommandContextItem(new CopyTextCommand(favorite.Url!))
+                    {
+                        RequestedShortcut = KeyChordHelpers.FromModifiers(true, false, false, false, (int)VirtualKey.C, 0),
+                    },
+                    new CommandContextItem(new OpenEdgeCommand(edgeManager, favorite, false, true))
+                    {
+                        RequestedShortcut = KeyChordHelpers.FromModifiers(true, false, false, false, (int)VirtualKey.N, 0),
+                    },
+                    new CommandContextItem(new OpenEdgeCommand(edgeManager, favorite, true, false))
+                    {
+                        RequestedShortcut = KeyChordHelpers.FromModifiers(true, false, false, false, (int)VirtualKey.P, 0),
+                    },
                 ];
             }
 

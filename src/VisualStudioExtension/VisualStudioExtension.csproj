@@ -42,6 +42,7 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" />
     <PackageReference Include="Serilog" />
     <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="Shmuelie.WinRTServer" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Platform)' == 'x64'">

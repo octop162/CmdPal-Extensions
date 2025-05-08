@@ -5,6 +5,8 @@ using System;
 using System.Threading;
 using Microsoft.CommandPalette.Extensions;
 using Serilog;
+using Shmuelie.WinRTServer;
+using Shmuelie.WinRTServer.CsWinRT;
 
 namespace EdgeFavoritesExtension
 {
@@ -17,11 +19,14 @@ namespace EdgeFavoritesExtension
 
             if (args.Length > 0 && args[0] == "-RegisterProcessAsComServer")
             {
-                using ExtensionServer server = new();
-                var extensionDisposedEvent = new ManualResetEvent(false);
-                var extensionInstance = new EdgeFavoritesExtension(extensionDisposedEvent);
-                server.RegisterExtension(() => extensionInstance);
+                global::Shmuelie.WinRTServer.ComServer server = new();
+                ManualResetEvent extensionDisposedEvent = new(false);
+                EdgeFavoritesExtension extensionInstance = new(extensionDisposedEvent);
+                server.RegisterClass<EdgeFavoritesExtension, IExtension>(() => extensionInstance);
+                server.Start();
                 extensionDisposedEvent.WaitOne();
+                server.Stop();
+                server.UnsafeDispose();
             }
         }
 

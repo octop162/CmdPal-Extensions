@@ -51,6 +51,10 @@ namespace EdgeFavoritesExtension
             _commands[0] = new CommandItem(page)
             {
                 Subtitle = "Description".GetLocalized(),
+                MoreCommands =
+                [
+                    new CommandContextItem(Settings!.SettingsPage),
+                ],
             };
 
             RaiseItemsChanged(0);

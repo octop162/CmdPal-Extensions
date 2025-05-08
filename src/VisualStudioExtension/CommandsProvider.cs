@@ -30,6 +30,10 @@ namespace VisualStudioExtension
                 new CommandItem(new SearchPage(_settingsManager, _visualStudioService))
                 {
                     Subtitle = "Description".GetLocalized(),
+                    MoreCommands =
+                    [
+                        new CommandContextItem(Settings.SettingsPage),
+                    ],
                 }
             ];
         }

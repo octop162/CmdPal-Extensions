@@ -16,10 +16,10 @@ namespace VisualStudioExtension
             "Setting_ShowPrerelease_Description".GetLocalized(),
             true);
 
-        private readonly ToggleSetting _sortDate = new(
-            nameof(SortDate),
-            "Setting_SortDate_Label".GetLocalized(),
-            "Setting_SortDate_Description".GetLocalized(),
+        private readonly ToggleSetting _sortLastUsed = new(
+            nameof(SortLastUsed),
+            "Setting_SortLastUsed_Label".GetLocalized(),
+            "Setting_SortLastUsed_Description".GetLocalized(),
             false);
 
         private readonly TextSetting _excludedVersions = new(
@@ -30,7 +30,7 @@ namespace VisualStudioExtension
 
         public bool ShowPrerelease => _showPrerelease.Value;
 
-        public bool SortDate => _sortDate.Value;
+        public bool SortLastUsed => _sortLastUsed.Value;
 
         public string[] ExcludedVersions => _excludedVersions.Value?.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToArray() ?? [];
 
@@ -40,7 +40,7 @@ namespace VisualStudioExtension
 
             _excludedVersions.Placeholder = "Setting_ExcludedVersions_Placeholder".GetLocalized();
             Settings.Add(_showPrerelease);
-            Settings.Add(_sortDate);
+            Settings.Add(_sortLastUsed);
             Settings.Add(_excludedVersions);
 
             LoadSettings();

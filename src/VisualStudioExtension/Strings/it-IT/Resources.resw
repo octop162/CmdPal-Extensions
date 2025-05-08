@@ -133,7 +133,7 @@
     <value>Visual Studio</value>
   </data>
   <data name="Result_Subtitle" xml:space="preserve">
-    <value>{0}: {1}</value>
+    <value>{0} - {1}</value>
     <comment>{0} is the Visual Studio instance name, {1} is the path</comment>
   </data>
   <data name="Settings" xml:space="preserve">
@@ -154,10 +154,10 @@
   <data name="Setting_ShowPrerelease_Label" xml:space="preserve">
     <value>Mostra prerelease</value>
   </data>
-  <data name="Setting_SortDate_Description" xml:space="preserve">
-    <value>Mostra i risultati ordinati per data</value>
+  <data name="Setting_SortLastUsed_Description" xml:space="preserve">
+    <value>Mostra prima i risultati usati recentemente</value>
   </data>
-  <data name="Setting_SortDate_Label" xml:space="preserve">
-    <value>Ordina per data</value>
+  <data name="Setting_SortLastUsed_Label" xml:space="preserve">
+    <value>Ordina per ultimo utilizzo</value>
   </data>
 </root>

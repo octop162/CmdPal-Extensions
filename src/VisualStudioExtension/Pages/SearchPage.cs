@@ -29,7 +29,7 @@ namespace VisualStudioExtension.Pages
         public override IListItem[] GetItems()
         {
             var items = Search();
-            if (_settingsManager.SortDate)
+            if (_settingsManager.SortLastUsed)
             {
                 items = items.OrderByDescending(i => i.LastAccessed);
             }

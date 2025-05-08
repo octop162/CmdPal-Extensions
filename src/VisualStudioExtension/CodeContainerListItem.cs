@@ -5,6 +5,7 @@ using System;
 using Community.PowerToys.Run.Plugin.VisualStudio.Core.Models;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 using VisualStudioExtension.Commands;
+using Windows.System;
 
 namespace VisualStudioExtension
 {
@@ -21,8 +22,14 @@ namespace VisualStudioExtension
             MoreCommands =
             [
                 new CommandContextItem(new OpenVisualStudioCommand(codeContainer, true)),
-                new CommandContextItem(new CopyTextCommand(codeContainer.FullPath)),
-                new CommandContextItem(new OpenFolderCommand(codeContainer)),
+                new CommandContextItem(new CopyTextCommand(codeContainer.FullPath))
+                {
+                    RequestedShortcut = KeyChordHelpers.FromModifiers(true, false, false, false, (int)VirtualKey.C, 0),
+                },
+                new CommandContextItem(new OpenFolderCommand(codeContainer))
+                {
+                    RequestedShortcut = KeyChordHelpers.FromModifiers(true, false, false, false, (int)VirtualKey.E, 0),
+                },
             ];
 
             LastAccessed = codeContainer.LastAccessed;
