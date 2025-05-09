@@ -18,27 +18,26 @@ namespace EdgeFavoritesExtension
         public FavoriteListItem(FavoriteItem favorite, EdgeManager edgeManager, SettingsManager settingsManager, ProfileManager profileManager)
             : base(new NoOpCommand())
         {
+            Title = favorite.Name;
+            MoreCommands = GetMoreCommands(favorite, edgeManager, settingsManager);
+
             if (favorite.Type == FavoriteType.Folder)
             {
                 Command = new NoOpCommand();
-                Title = favorite.Name;
                 Subtitle = settingsManager.SearchMode == SearchMode.Tree && profileManager.FavoriteProviders.Count > 1
                     ? string.Format(CultureInfo.CurrentCulture, "FolderResult_Profile_Subtitle".GetLocalized(), favorite.Path, favorite.Profile.Name)
                     : string.Format(CultureInfo.CurrentCulture, "FolderResult_Subtitle".GetLocalized(), favorite.Path);
                 Icon = new IconInfo("\uE8B7");
                 TextToSuggest = settingsManager.SearchMode == SearchMode.Tree ? $"{favorite.Path}/" : favorite.Name;
-                MoreCommands = GetMoreCommands(favorite, edgeManager, settingsManager);
             }
             else if (favorite.Type == FavoriteType.Url)
             {
                 Command = new OpenEdgeCommand(edgeManager, favorite, false, false);
-                Title = favorite.Name;
                 Subtitle = settingsManager.SearchMode == SearchMode.Tree && profileManager.FavoriteProviders.Count > 1
                     ? string.Format(CultureInfo.CurrentCulture, "FavoriteResult_Profile_Subtitle".GetLocalized(), favorite.Path, favorite.Profile.Name)
                     : string.Format(CultureInfo.CurrentCulture, "FavoriteResult_Subtitle".GetLocalized(), favorite.Path);
                 Icon = new IconInfo("\uE734");
                 TextToSuggest = settingsManager.SearchMode == SearchMode.Tree ? favorite.Path : favorite.Name;
-                MoreCommands = GetMoreCommands(favorite, edgeManager, settingsManager);
             }
             else
             {
@@ -55,6 +54,10 @@ namespace EdgeFavoritesExtension
                 {
                     return
                     [
+                        new CommandContextItem(new OpenEdgeCommand(edgeManager, favorites, false, false))
+                        {
+                            RequestedShortcut = KeyChordHelpers.FromModifiers(true, false, false, false, (int)VirtualKey.O, 0),
+                        },
                         new CommandContextItem(new OpenEdgeCommand(edgeManager, favorites, false, true))
                         {
                             RequestedShortcut = KeyChordHelpers.FromModifiers(true, false, false, false, (int)VirtualKey.N, 0),
