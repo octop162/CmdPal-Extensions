@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Submit package to WinGet
         run: |
-          $github = Invoke-RestMethod -uri "https://api.github.com/repos/davidegiacometti/CmdPal-Extensions/releases"
+          $github = Invoke-RestMethod -uri "https://api.github.com/repos/octop162/CmdPal-Extensions/releases"
 
           $targetRelease = $github | Where-Object -Property tag_name -eq "${{github.ref}}".Replace("refs/tags/", "") | Select -First 1
           $installerX64Url = $targetRelease | Select -ExpandProperty assets -First 1 | Where-Object -Property name -Like "*x64*.msix" | Select -ExpandProperty browser_download_url
@@ -19,9 +19,7 @@ jobs:
           $tag = $targetRelease.tag_name
           $version = $tag -replace '^.*-', ''
 
-          if ($tag.StartsWith("vs")) {
-            $package = "davidegiacometti.VisualStudioForCmdPal"
-          } elseif ($tag.StartsWith("ef")) {
+          if ($tag.StartsWith("ef")) {
             $package = "davidegiacometti.ChromeFavoritesForCmdPal"
           } else {
             exit 1
