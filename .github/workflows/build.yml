@@ -51,10 +51,6 @@ jobs:
     - name: Restore packages
       run: msbuild src\Extensions.sln /t:Restore /p:Configuration=Release
 
-    - name: Build Visual Studio
-      if: startsWith(github.ref, 'refs/tags/vs-') || startsWith(github.ref, 'refs/heads/')
-      run: msbuild src\VisualStudioExtension\VisualStudioExtension.csproj /p:Configuration=Release /p:Platform=${{matrix.platform}} /p:Version=${{env.VERSION}}
-
     - name: Build Chrome Favorites
       if: startsWith(github.ref, 'refs/tags/ef-') || startsWith(github.ref, 'refs/heads/')
       run: msbuild  src\ChromeFavoritesExtension\ChromeFavoritesExtension.csproj /p:Configuration=Release /p:Platform=${{matrix.platform}} /p:Version=${{env.VERSION}}
