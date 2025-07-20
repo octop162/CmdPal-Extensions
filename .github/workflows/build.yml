@@ -55,9 +55,9 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/vs-') || startsWith(github.ref, 'refs/heads/')
       run: msbuild src\VisualStudioExtension\VisualStudioExtension.csproj /p:Configuration=Release /p:Platform=${{matrix.platform}} /p:Version=${{env.VERSION}}
 
-    - name: Build Edge Favorites
+    - name: Build Chrome Favorites
       if: startsWith(github.ref, 'refs/tags/ef-') || startsWith(github.ref, 'refs/heads/')
-      run: msbuild  src\EdgeFavoritesExtension\EdgeFavoritesExtension.csproj /p:Configuration=Release /p:Platform=${{matrix.platform}} /p:Version=${{env.VERSION}}
+      run: msbuild  src\ChromeFavoritesExtension\ChromeFavoritesExtension.csproj /p:Configuration=Release /p:Platform=${{matrix.platform}} /p:Version=${{env.VERSION}}
 
     - name: Prepare artifact
       run: |

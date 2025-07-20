@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "ChromeFavoritesExtension (Package)": {
+      "commandName": "MsixPackage",
+      "commandLineArgs": "-RegisterProcessAsComServer"
+    },
+    "ChromeFavoritesExtension (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

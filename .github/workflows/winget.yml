@@ -22,7 +22,7 @@ jobs:
           if ($tag.StartsWith("vs")) {
             $package = "davidegiacometti.VisualStudioForCmdPal"
           } elseif ($tag.StartsWith("ef")) {
-            $package = "davidegiacometti.EdgeFavoritesForCmdPal"
+            $package = "davidegiacometti.ChromeFavoritesForCmdPal"
           } else {
             exit 1
           }
